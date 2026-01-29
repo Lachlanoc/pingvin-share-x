@@ -213,6 +213,17 @@ export class ConfigService extends EventEmitter {
         condition: (value: number) => value >= 0 && value <= 9,
         message: "Zip compression level must be between 0 and 9",
       },
+      {
+        key: "share.defaultExpiration",
+        condition: (value: number) => {
+          const maxExpiration = this.get("share.maxExpiration");
+          if (maxExpiration.value === 0) return true;
+
+          const defaultTtl = stringToTimespan(String(value));
+          return defaultTtl.value <= maxExpiration.value;
+        },
+        message: "Default expiration cannot exceed max expiration",
+      },
       // TODO add validation for timespan type
     ];
 

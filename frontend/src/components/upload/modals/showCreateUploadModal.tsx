@@ -40,6 +40,7 @@ const showCreateUploadModal = (
     isReverseShare: boolean;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
+    defaultExpiration: Timespan;
     maxExpiration: Timespan;
     shareIdLength: number;
     simplified: boolean;
@@ -113,6 +114,7 @@ const CreateUploadModalBody = ({
     isReverseShare: boolean;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
+    defaultExpiration: Timespan;
     maxExpiration: Timespan;
     shareIdLength: number;
   };
@@ -157,9 +159,9 @@ const CreateUploadModalBody = ({
       password: undefined,
       maxViews: undefined,
       description: undefined,
-      expiration_num: 1,
-      expiration_unit: "-days",
-      never_expires: false,
+      expiration_num: options.defaultExpiration.value === 0 ? 1 : options.defaultExpiration.value,
+      expiration_unit: `-${options.defaultExpiration.unit}`,
+      never_expires: options.defaultExpiration.value === 0,
     },
     validate: yupResolver(validationSchema),
   });

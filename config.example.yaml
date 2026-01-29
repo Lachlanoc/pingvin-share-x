@@ -17,6 +17,8 @@ share:
   allowRegistration: "true"
   #Whether unauthenticated users can create shares
   allowUnauthenticatedShares: "false"
+  #Default share expiration. Set to 0 for never.
+  defaultExpiration: 1 days
   #Maximum share expiration. Set to 0 to allow unlimited expiration.
   maxExpiration: 0 days
   #Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.

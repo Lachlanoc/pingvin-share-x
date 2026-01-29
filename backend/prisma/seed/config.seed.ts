@@ -46,6 +46,11 @@ export const configVariables = {
       defaultValue: "false",
       secret: false,
     },
+    defaultExpiration: {
+      type: "timespan",
+      defaultValue: "1 days",
+      secret: false,
+    },
     maxExpiration: {
       type: "timespan",
       defaultValue: "0 days",
